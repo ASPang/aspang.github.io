@@ -1,23 +1,3 @@
-
-/**
- This criterion is linked to a Learning Outcome List to Tab Semantics
-List semantics are replaced with tab panel semantics.
-
-This criterion is linked to a Learning Outcome Tab Position
-Focus position in the tablist is announced.
-
-This criterion is linked to a Learning Outcome Tab Focus opens Panel
-When a tab is in focus, its associated panel displays.
-
-This criterion is linked to a Learning Outcome Arrow Key Between Tabs
-Arrow keys can be used to navigate between tabs.
-
-This criterion is linked to a Learning Outcome Tab Key from Tab to Panel
-Tab key can be used to move from a selected tab directly to its associated panel, Shift+Tab to move back to tabs.
-
-This criterion is linked to a Learning Outcome Panels Focusable
-Panels are keyboard focusable.
- */
 ;(function ( $, window, document, undefined ) {
 	 
 	var pluginName = 'ik_tabs',
@@ -49,49 +29,10 @@ Panels are keyboard focusable.
 		var id, $elem, $tabbar, pad;
 		
 		plugin = this;
-		id = 'tabs' + $('.ik_tabs').length; // create unique id
-		/*$elem = this.element.addClass('ik_tabs');
-		
-		$tabbar = $('<ul/>') // create ul element to hold all tabs
-			.addClass('ik_tabbar cf')
-			.attr({
-				'role': 'tablist' // add tablistr role
-			})
-			.prependTo($elem);
-		
-		plugin.panels = $elem // initialize panels and create tabs
-			.children('div')
-			.each( function(i, el) {
-				
-				var $tab, $panel, lbl;
-				
-				$panel = $(el).attr({
-					'id': id + '_panel' + i,  // add unique id for a panel					
-					'role': 'tabpanel', // add tabpanel role
-					'aria-hidden': true, // initially hide from screen readers
-					'tabindex': 0 // add to tab order
-				})
-				.addClass('ik_tabpanel')
-				.hide();
-				
-				lbl = $panel.attr('title'); // get tab label from panel title
-				
-				$panel.removeAttr('title');
-				
-				$tab = $('<li/>').attr({
-					'id': id + '_tab' + i, // create unique id for a tab
-					'role': 'tab', // assign tab role
-					'aria-controls': 'panel' + i // define which panel it controls
-				})
-				.text(lbl > '' ? lbl : 'Tab ' + (i + 1))
-				.on('click', {'plugin': plugin, 'index': i}, plugin.selectTab) // add mouse event handler
-				.on('keydown', {'plugin': plugin, 'index': i}, plugin.onKeyDown) // add keyboard event handler
-				.appendTo($tabbar);
-			});*/
-		
+
 		plugin.tabs = $('[role="tab"]');
 		plugin.panels = $('[role="tabpanel"]');
-		
+
 		plugin.tabs.each(function(i, el) {
 			$(el)
 				.on('click', {'plugin': plugin, 'index': i}, plugin.selectTab) // add mouse event handler
@@ -141,7 +82,7 @@ Panels are keyboard focusable.
 			});
 		
 		if (event.data.type) $($tabs[ind]).focus(); // move focus to current tab if reached by mouse or keyboard
-		console.log(event.data.type)
+		
 		$panels // hide all panels
 			.attr({
 				'aria-hidden': true
