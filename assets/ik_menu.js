@@ -37,7 +37,8 @@ As described in Adding Keyboard Operability for a menu bar, the menu bar functio
         var id, $elem, plugin;
 
         plugin = this;
-        id = 'menu' + $('.ik_menu').length; // generate unique id
+        /*
+		id = 'menu' + $('.ik_menu').length; // generate unique id
         $elem = plugin.element;
 
         $elem.addClass('ik_menu').attr({
@@ -93,13 +94,11 @@ As described in Adding Keyboard Operability for a menu bar, the menu bar functio
                     })
                     .addClass('expandable');
             });
+		*/
 
-        plugin.selected = plugin.menuitems // setup selected menuitem
-            .find('.selected')
-            .attr({
-                tabindex: 0,
-                'aria-selected': true
-            });
+        plugin.menuitems = $('[role="menuitem"]');
+
+        plugin.selected = plugin.menuitems.find('.selected'); // setup selected menuitem
 
         if (!plugin.selected.length) {
             plugin.menuitems.eq(0).attr({
