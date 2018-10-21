@@ -1,19 +1,3 @@
-/**
- Instructions Provided
-Instructions are announced on how to use the menu bar with a keyboard, when the menu bar first receives focus.
-
-This criterion is linked to a Learning Outcome Menu Bar Semantics
-List item semantics are replaced with menu semantics.
-
-This criterion is linked to a Learning Outcome Submenus Announced
-When a menu item with a submenu receives focus, the presence of a submenu is announced.
-
-This criterion is linked to a Learning Outcome Focus Control
-Only elements of the menu bar that are in view are able to receive focus.
-
-This criterion is linked to a Learning Outcome Keyboard Operable
-As described in Adding Keyboard Operability for a menu bar, the menu bar functions using a keyboard (and mouse).
- */
 (function($, window, document, undefined) {
     var pluginName = 'ik_menu',
         defaults = {};
@@ -37,64 +21,6 @@ As described in Adding Keyboard Operability for a menu bar, the menu bar functio
         var id, $elem, plugin;
 
         plugin = this;
-        /*
-		id = 'menu' + $('.ik_menu').length; // generate unique id
-        $elem = plugin.element;
-
-        $elem.addClass('ik_menu').attr({
-            id: id
-        });
-
-        $('<div/>') // add div element to be used with aria-described attribute of the menu
-            .text(plugin.options.instructions) // get instruction text from plugin options
-            .addClass('ik_readersonly') // hide element from visual display
-            .attr({
-                id: id + '_instructions',
-                'aria-hidden': 'true' // hide element from screen readers to prevent it from being read twice
-            })
-            .appendTo(this.element);
-
-        $elem.find('ul:eq(0)').attr({
-            id: id,
-            role: 'menubar', // assign menubar role to the topmost ul element
-            tabindex: 0,
-            'aria-labelledby': id + '_instructions'
-        });
-
-        $elem.find('li>ul').attr({
-            role: 'menu',
-            'aria-hidden': true // hide submenus from screen reader
-        });
-
-        plugin.menuitems = $elem
-            .find('li') // setup menuitems
-            .css({ 'list-style': 'none' })
-            .each(function(i, el) {
-                var $me, $link;
-
-                $me = $(this);
-                $link = $me.find('>a').attr({
-                    // disable links
-                    tabindex: -1,
-                    'aria-hidden': true
-                });
-
-                $me.attr({
-                    role: 'menuitem', // assign menuitem rols
-                    tabindex: -1, // remove from tab order
-                    'aria-label': $link.text() // label with link text
-                });
-
-                $me
-                    .has('ul')
-                    .attr({
-                        // setup submenus
-                        'aria-haspopup': true,
-                        'aria-expanded': false
-                    })
-                    .addClass('expandable');
-            });
-		*/
 
         plugin.menuitems = $('[role="menuitem"]');
 
