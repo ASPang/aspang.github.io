@@ -17,13 +17,13 @@ When in focus, or while a mouse pointer is hovering over the carousel, panels ro
 This criterion is linked to a Learning Outcome Rotate when No Focus
 When the carousel is not in focus, panels rotate automatically.
  */
-;(function($, window, document, undefined) {
+(function($, window, document, undefined) {
     var pluginName = 'ik_carousel',
         defaults = {
             // default settings
             instruction: 'instruction text',
-            animationSpeed: 3000,
-        }
+            animationSpeed: 3000
+        };
 
     /**
 	 * @constructs Plugin
@@ -33,20 +33,20 @@ When the carousel is not in focus, panels rotate automatically.
 	 * @param {number} options.animationSpeed - Slide transition speed in milliseconds.
 	 */
     function Plugin(element, options) {
-        this._name = pluginName
-        this._defaults = defaults
-        this.element = $(element)
-        this.options = $.extend({}, defaults, options)
+        this._name = pluginName;
+        this._defaults = defaults;
+        this.element = $(element);
+        this.options = $.extend({}, defaults, options);
 
-        this.init()
+        this.init();
     }
 
     /** Initializes plugin. */
     Plugin.prototype.init = function() {
-        var id, plugin, $elem, $image, $controls, $navbar
+        var id, plugin, $elem, $image, $controls, $navbar;
 
-        plugin = this
-        id = 'carousel' + $('.ik_slider').length
+        plugin = this;
+        /*id = 'carousel' + $('.ik_slider').length
         $elem = plugin.element
 
         $elem
@@ -102,22 +102,37 @@ When the carousel is not in focus, panels rotate automatically.
             $('<li/>')
                 .on('click', { plugin: plugin, slide: i }, plugin.gotoSlide)
                 .appendTo($navbar)
-        })
+        })*/
 
-        $('<div/>') // add instructions for screen reader users
-            .attr({
-                id: id + '_instructions',
-                'aria-hidden': 'true',
-            })
-            .text(this.options.instructions)
-            .addClass('ik_readersonly')
-            .appendTo($elem)
+        // Event handlers
+        $('.ik_carousel')
+            .on('keydown', { plugin: plugin }, plugin.onKeyDown)
+            .on('mouseenter focusin', { plugin: plugin }, plugin.stopTimer)
+            .on('mouseleave focusout', { plugin: plugin }, plugin.startTimer);
 
-        plugin.navbuttons = $navbar.children('li')
-        plugin.slides.first().addClass('active')
-        plugin.navbuttons.first().addClass('active')
-        plugin.startTimer({ data: { plugin: plugin } })
-    }
+        $('.ik_prev').on(
+            'click',
+            { plugin: plugin, slide: 'left' },
+            plugin.gotoSlide
+        );
+
+        $('.ik_next').on(
+            'click',
+            { plugin: plugin, slide: 'right' },
+            plugin.gotoSlide
+        );
+
+        var navBtn = $('.ik_navbar li');
+        navBtn.each(function(i, el) {
+            $(el).on('click', { plugin: plugin, slide: i }, plugin.gotoSlide);
+        });
+
+        plugin.navbuttons = navBtn;
+        plugin.slides = $('figure');
+        //plugin.slides.first().addClass('active')
+        //plugin.navbuttons.first().addClass('active')
+        plugin.startTimer({ data: { plugin: plugin } });
+    };
 
     /** 
 	 * Starts carousel timer. 
@@ -126,26 +141,26 @@ When the carousel is not in focus, panels rotate automatically.
 	 * @param {Object} event - Mouse or focus event.
 	 */
     Plugin.prototype.startTimer = function(event) {
-        var plugin
+        var plugin;
 
-        $elem = $(this)
-        plugin = event.data.plugin
+        $elem = $(this);
+        plugin = event.data.plugin;
 
         if (plugin.timer) {
-            clearInterval(plugin.timer)
-            plugin.timer = null
+            clearInterval(plugin.timer);
+            plugin.timer = null;
         }
 
         plugin.timer = setInterval(
             plugin.gotoSlide,
             plugin.options.animationSpeed,
             { data: { plugin: plugin, slide: 'right' } }
-        )
+        );
 
         if (event.type === 'focusout') {
-            plugin.element.removeAttr('aria-live')
+            plugin.element.removeAttr('aria-live');
         }
-    }
+    };
 
     /** 
 	 * Stops carousel timer. 
@@ -155,14 +170,14 @@ When the carousel is not in focus, panels rotate automatically.
 	 * @param {object} event.data.plugin - Reference to plugin.
 	 */
     Plugin.prototype.stopTimer = function(event) {
-        var plugin = event.data.plugin
-        clearInterval(plugin.timer)
-        plugin.timer = null
+        var plugin = event.data.plugin;
+        clearInterval(plugin.timer);
+        plugin.timer = null;
 
         if (event.type === 'focusin') {
-            plugin.element.attr({ 'aria-live': 'polite' })
+            plugin.element.attr({ 'aria-live': 'polite' });
         }
-    }
+    };
 
     /** 
 	 * Goes to specified slide. 
@@ -173,61 +188,61 @@ When the carousel is not in focus, panels rotate automatically.
 	 * @param {number} event.data.slide - Index of the slide to show.
 	 */
     Plugin.prototype.gotoSlide = function(event) {
-        var plugin, n, $elem, $active, $next, index, direction, transevent
+        var plugin, n, $elem, $active, $next, index, direction, transevent;
 
-        plugin = event.data.plugin
-        n = event.data.slide
-        $elem = plugin.element
-        $active = $elem.children('.active')
-        index = $active.index()
+        plugin = event.data.plugin;
+        n = event.data.slide;
+        $elem = plugin.element;
+        $active = $elem.children('.active');
+        index = $active.index();
 
         if (typeof n === 'string') {
             if (n === 'left') {
-                direction = 'left'
-                n = index == 0 ? plugin.slides.length - 1 : --index
+                direction = 'left';
+                n = index == 0 ? plugin.slides.length - 1 : --index;
             } else {
-                direction = 'right'
-                n = index == plugin.slides.length - 1 ? 0 : ++index
+                direction = 'right';
+                n = index == plugin.slides.length - 1 ? 0 : ++index;
             }
         } else {
             if (index < n || (index == 0 && n == plugin.slides.length - 1)) {
-                direction = 'left'
+                direction = 'left';
             } else {
-                direction = 'right'
+                direction = 'right';
             }
         }
 
-        $next = plugin.slides.eq(n).addClass('next')
-        transevent = ik_utils.getTransitionEventName()
+        $next = plugin.slides.eq(n).addClass('next');
+        transevent = ik_utils.getTransitionEventName();
         $active
             .addClass(direction)
             .on(transevent, { next: $next, dir: direction }, function(event) {
-                var active, next, dir
+                var active, next, dir;
 
-                active = $(this)
-                next = event.data.next
-                dir = event.data.dir
+                active = $(this);
+                next = event.data.next;
+                dir = event.data.dir;
 
                 active
                     .attr({
-                        'aria-hidden': 'true',
+                        'aria-hidden': 'true'
                     })
                     .off(ik_utils.getTransitionEventName())
-                    .removeClass(direction + ' active')
+                    .removeClass(direction + ' active');
 
                 next
                     .attr({
-                        'aria-hidden': 'false',
+                        'aria-hidden': 'false'
                     })
                     .removeClass('next')
-                    .addClass('active')
-            })
+                    .addClass('active');
+            });
 
         plugin.navbuttons
             .removeClass('active')
             .eq(n)
-            .addClass('active')
-    }
+            .addClass('active');
+    };
 
     /**
 	* Handles keydown event on the next/prev links.
@@ -237,28 +252,28 @@ When the carousel is not in focus, panels rotate automatically.
 	* @param {object} event.data.plugin - Reference to plugin.
 	*/
     Plugin.prototype.onKeyDown = function(event) {
-        var plugin = event.data.plugin
+        var plugin = event.data.plugin;
 
         switch (event.keyCode) {
             case ik_utils.keys.left:
-                event.data = { plugin: plugin, slide: 'left' }
-                plugin.gotoSlide(event)
-                break
+                event.data = { plugin: plugin, slide: 'left' };
+                plugin.gotoSlide(event);
+                break;
             case ik_utils.keys.right:
-                event.data = { plugin: plugin, slide: 'right' }
-                plugin.gotoSlide(event)
-                break
+                event.data = { plugin: plugin, slide: 'right' };
+                plugin.gotoSlide(event);
+                break;
             case ik_utils.keys.esc:
-                plugin.element.blur()
-                break
+                plugin.element.blur();
+                break;
         }
-    }
+    };
 
     $.fn[pluginName] = function(options) {
         return this.each(function() {
             if (!$.data(this, pluginName)) {
-                $.data(this, pluginName, new Plugin(this, options))
+                $.data(this, pluginName, new Plugin(this, options));
             }
-        })
-    }
-})(jQuery, window, document)
+        });
+    };
+})(jQuery, window, document);
