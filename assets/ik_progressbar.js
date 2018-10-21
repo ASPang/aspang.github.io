@@ -1,13 +1,3 @@
-/***
-	Instructions Provided
-	When the progress bar begins running, instructions are provided on how to announce progress percentage.
-
-	This criterion is linked to a Learning Outcome Keyboard Announce Progress
-	The keyboard can be used to announce progress percentage.
-
-	This criterion is linked to a Learning Outcome Announce Complete
-	When progress finishes, Loading Complete is announced.
-***/
 ;(function ( $, window, document, undefined ) {
 	
 	var pluginName = 'ik_progressbar',
@@ -90,7 +80,6 @@
 		
 		var value;
 		
-		//value = Number( this.element.data('value') ); // inaccessible
 		value = Number( this.element.attr('aria-valuenow') ); // accessible
 
 		return parseInt( value );
@@ -130,11 +119,6 @@
 		} else {
 			val = n;
 		}
-		
-		//this.element
-		//	.data({ // inaccessible
-		//		'value': parseInt(val) 
-		//	});
 		
 		this.element
 			.attr({ // accessible
