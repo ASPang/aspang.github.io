@@ -1,16 +1,3 @@
-/**
-	 This criterion is linked to a Learning Outcome Slider Focusable
-	Slider thumb is keyboard focusable.
-
-	This criterion is linked to a Learning Outcome Keyboard Operable
-	Slider thumb moves using Left and Right Arrow keys, and the Home and End keys.
-
-	This criterion is linked to a Learning Outcome Min/Max Values Announced
-	Minimum and maximum values are announced.
-
-	This criterion is linked to a Learning Outcome Value Announced
-	When the slider moves, its new value is announced.
- */
 ;(function ( $, window, document, undefined ) {
 	
 	var pluginName = 'ik_slider',
