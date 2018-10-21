@@ -35,6 +35,7 @@ When a list items is moved, its new position is announced
         var $elem, plugin, id, total;
 
         plugin = this;
+        /*
         id = 'sortable_' + $('.ik_sortable').length;
         $elem = this.element
             .attr({
@@ -74,6 +75,15 @@ When a list items is moved, its new position is announced
                     tabindex: i > 0 ? -1 : 0
                 });
             })
+            .on('dragstart', { plugin: plugin }, plugin.onDragStart)
+            .on('drop', { plugin: plugin }, plugin.onDrop)
+            .on('dragend', { plugin: plugin }, plugin.onDragEnd)
+            .on('dragenter', { plugin: plugin }, plugin.onDragEnter)
+            .on('dragover', { plugin: plugin }, plugin.onDragOver)
+            .on('dragleave', { plugin: plugin }, plugin.onDragLeave)
+            .on('keydown', { plugin: plugin }, plugin.onKeyDown);
+*/
+        plugin.items = $('[role="listitem"]')
             .on('dragstart', { plugin: plugin }, plugin.onDragStart)
             .on('drop', { plugin: plugin }, plugin.onDrop)
             .on('dragend', { plugin: plugin }, plugin.onDragEnd)
