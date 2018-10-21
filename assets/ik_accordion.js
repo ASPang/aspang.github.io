@@ -1,21 +1,21 @@
 /**
 	Header Focus
-	Accordion headers are keyboard focusable.
+	Accordion headers are keyboard focusable.[done]
 
 	This criterion is linked to a Learning Outcome Headers as Buttons
-	Accordion headers are announced as buttons instead of list items.
+	Accordion headers are announced as buttons instead of list items.[done]
 
 	This criterion is linked to a Learning Outcome Open Panels
-	Accordion headers open panels with a click or key press.
+	Accordion headers open panels with a click or key press.[done]
 
 	This criterion is linked to a Learning Outcome Expand/Collapse
-	Accordions announce expanded when a panel is opened and collapsed when closed.
+	Accordions announce expanded when a panel is opened and collapsed when closed.[done]
 
 	This criterion is linked to a Learning Outcome Panels Focusable
 	Accordion panels are focusable with a Tab key press when opened.
 
 	This criterion is linked to a Learning Outcome Header Navigation
-	Navigation between accordion headers with Up and Down Arrow keys, and the Tab key.
+	Navigation between accordion headers with Up and Down Arrow keys, and the Tab key.[done]
  */
 ;(function ( $, window, document, undefined ) {
  	
@@ -52,45 +52,33 @@
 		plugin = this;
 		
 		$elem.attr({
-			'id': id,
-			'role': 'region'
+			'id': id
 		}).addClass('ik_accordion');
 			
-		$elem.attr({'aria-multiselectable': !this.options.autoCollapse}); // define if more than one panel can be expanded
-
 		this.headers = $elem.children('dt').each(function(i, el) {
 			var $me, $btn;
 			
 			$me = $(el);
-			/*$btn = $('<div/>').attr({
-		  'id': id + '_btn_' + i,
-		  'role': 'button',
-                'aria-controls': id + '_panel_' + i, // associate button with corresponding panel
-                'aria-expanded': false, // toggle expanded state
-                'tabindex': 0 //add keyboard focus
-            })
+			/*
+			$btn = $('<div/>').attr({
+          'id': id + '_btn_' + i
+        })
         .addClass('button')
         .html($me.html())
-		.on('keydown', {'plugin': plugin}, plugin.onKeyDown) // enable keyboard navigation
-		.on('click', {'plugin': plugin}, plugin.togglePanel);
+        .on('click', {'plugin': plugin}, plugin.togglePanel);
         
 			$me.empty().append($btn); // wrap content of each header in an element with role button
 			*/
-
-		})
-		.attr({'role': 'heading'}); // set heading role for each accordion header
+		});
 		
-		$('[role="button"')
-				.on('keydown', {'plugin': plugin}, plugin.onKeyDown) // enable keyboard navigation
-				.on('click', {'plugin': plugin}, plugin.togglePanel);
-				
+		$('[role="button"]')
+			.on('keydown', {'plugin': plugin}, plugin.onKeyDown) // enable keyboard navigation
+			.on('click', {'plugin': plugin}, plugin.togglePanel);
+
 		this.panels = $elem.children('dd').each(function(i, el) {
 			var $me = $(this), id = $elem.attr('id') + '_panel_' + i;
 			$me.attr({
-				'id': id,
-				'role': 'region', // add role region to each panel
-                'aria-hidden': true, // mark all panels as hidden
-                'tabindex': 0 // add panels into the tab order
+				'id': id
 			});
 		}).hide();
 		
@@ -122,10 +110,14 @@
 				
 				if($btn[0] != $(event.currentTarget)[0]) { 
 					$btn.removeClass('expanded');
+					$btn.attr("aria-expanded", "false");
 					$hdr.next().slideUp(plugin.options.animationSpeed);
+					$hdr.attr("aria-hidden", "true");
 				} else { 
 					$btn.addClass('expanded');
+					$btn.attr("aria-expanded", "true");
 					$hdr.next().slideDown(plugin.options.animationSpeed);
+					$hdr.attr("aria-hidden", "false");
 				}
 			});
 			
@@ -133,6 +125,14 @@
 		
 			isVisible = !!$panel.is(':visible');
 			$panel.slideToggle({ duration: plugin.options.animationSpeed });
+			$me.toggleClass("expanded")
+
+			if(isVisible) {
+				$me.attr("aria-expanded", "false");
+			}
+			else {				
+				$me.attr("aria-expanded", "true");
+			}
 			
 		}
 	};
