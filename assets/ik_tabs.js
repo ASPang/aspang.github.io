@@ -50,7 +50,7 @@ Panels are keyboard focusable.
 		
 		plugin = this;
 		id = 'tabs' + $('.ik_tabs').length; // create unique id
-		$elem = this.element.addClass('ik_tabs');
+		/*$elem = this.element.addClass('ik_tabs');
 		
 		$tabbar = $('<ul/>') // create ul element to hold all tabs
 			.addClass('ik_tabbar cf')
@@ -87,10 +87,17 @@ Panels are keyboard focusable.
 				.on('click', {'plugin': plugin, 'index': i}, plugin.selectTab) // add mouse event handler
 				.on('keydown', {'plugin': plugin, 'index': i}, plugin.onKeyDown) // add keyboard event handler
 				.appendTo($tabbar);
-			});
+			});*/
 		
-		plugin.tabs = $tabbar.find('li');
+		plugin.tabs = $('[role="tab"]');
+		plugin.panels = $('[role="tabpanel"]');
 		
+		plugin.tabs.each(function(i, el) {
+			$(el)
+				.on('click', {'plugin': plugin, 'index': i}, plugin.selectTab) // add mouse event handler
+				.on('keydown', {'plugin': plugin, 'index': i}, plugin.onKeyDown) // add keyboard event handler
+		});			
+
 		plugin.selectTab({ // select a pre-defined tab / panel 
 			data:{
 				'plugin': plugin, 
