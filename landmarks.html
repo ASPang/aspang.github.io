@@ -12,14 +12,7 @@
 </head>
 
 <body>
-    <!-- Todo:
-        - Implement validation using join.lib.js
-            - role="alert" makes element get read at the begining
-        - Need to double check that "role" is encompassing correct container/element
-            https://learn.canvas.net/courses/2156/pages/wai-aria-landmarks?module_item_id=219573
-        - Landmark regions with the same role are distinguishable from each other
-        - double check if class="profile" container needs role="form" 
-        -->
+
     <div id="top-bar">&nbsp; </div>
     <!-- Page Body -->
     <div class="page_wrapper">
@@ -64,7 +57,7 @@
             <div id="lrg_content">
                 <div id="leftcolumn">
                     <a id="menu"></a>
-                    <div  role="navigation" id="side-menu" aria-label="left side menu" accesskey="0">
+                    <div role="navigation" id="side-menu" aria-label="left side menu" accesskey="0">
                         <br/>
                         <h2 class="box"><span>Networking</span></h2>
                         <div class="box" id="menu_Networking">
@@ -104,7 +97,8 @@
                         <dl>
                             <dt>
                                 <img src="images/required.gif" height="14" width="14" alt="Required Field" /> denotes required
-                                fields.<br />
+                                fields.
+                                <br />
                             </dt>
                             <dd>
                             </dd>
@@ -121,7 +115,8 @@
                                 <img src="images/required.gif" alt="Required Field" />
                             </dt>
                             <dd>
-                                <input type="text" name="password" size="20" id="password" value="" class="input" aria-required="true" aria-describedby="password_error"/><br />
+                                <input type="text" name="password" size="20" id="password" value="" class="input" aria-required="true" aria-describedby="password_error"
+                                /><br />
                                 <span id="password_error">&nbsp;</span>
                             </dd>
                             <dt>
@@ -129,7 +124,8 @@
                                 <img src="images/required.gif" class="img" />
                             </dt>
                             <dd>
-                                <input type="text" name="email" size="30" id="email" value="" class="input" aria-required="true" aria-describedby="email_error"/><br />
+                                <input type="text" name="email" size="30" id="email" value="" class="input" aria-required="true" aria-describedby="email_error"
+                                /><br />
                                 <span id="email_error">&nbsp;</span>
                             </dd>
                             <dt>
