@@ -1,27 +1,7 @@
-/**
-Instructions Provided
-Screen reader instructions are provided when carousel receives focus.
-
-This criterion is linked to a Learning Outcome Carousel Focusable
-Carousel panels are keyboard focusable.
-
-This criterion is linked to a Learning Outcome Carousel Navigation
-Navigate between panels with the Left and Right Arrow keys.
-
-This criterion is linked to a Learning Outcome Panels Read Aloud
-While the carousel has focus, each panel reads aloud when it comes into view.
-
-This criterion is linked to a Learning Outcome Manual while in Focus
-When in focus, or while a mouse pointer is hovering over the carousel, panels rotate manually only.
-
-This criterion is linked to a Learning Outcome Rotate when No Focus
-When the carousel is not in focus, panels rotate automatically.
- */
 (function($, window, document, undefined) {
     var pluginName = 'ik_carousel',
         defaults = {
             // default settings
-            instruction: 'instruction text',
             animationSpeed: 3000
         };
 
@@ -46,63 +26,6 @@ When the carousel is not in focus, panels rotate automatically.
         var id, plugin, $elem, $image, $controls, $navbar;
 
         plugin = this;
-        /*id = 'carousel' + $('.ik_slider').length
-        $elem = plugin.element
-
-        $elem
-            .attr({
-                id: id,
-                role: 'region', // assign region role
-                tabindex: 0, // add into the tab order
-                'aria-describedby': id + '_instructions', // associate with instructions
-            })
-            .addClass('ik_carousel')
-            .on('keydown', { plugin: plugin }, plugin.onKeyDown)
-            .on('mouseenter focusin', { plugin: plugin }, plugin.stopTimer)
-            .on('mouseleave focusout', { plugin: plugin }, plugin.startTimer)
-
-        $controls = $('<div/>')
-            .attr({
-                'aria-hidden': 'true', // hide controls from screen readers
-            })
-            .addClass('ik_controls')
-            .appendTo($elem)
-
-        $('<div/>')
-            .addClass('ik_button ik_prev')
-            .on('click', { plugin: plugin, slide: 'left' }, plugin.gotoSlide)
-            .appendTo($controls)
-
-        $('<div/>')
-            .addClass('ik_button ik_next')
-            .on('click', { plugin: plugin, slide: 'right' }, plugin.gotoSlide)
-            .appendTo($controls)
-
-        $navbar = $('<ul/>')
-            .addClass('ik_navbar')
-            .appendTo($controls)
-
-        plugin.slides = $elem.children('figure').each(function(i, el) {
-            var $me, $src
-
-            $me = $(el)
-            $src = $me
-                .find('img')
-                .remove()
-                .attr('src')
-
-            $me
-                .attr({
-                    'aria-hidden': 'true', // hide images from screen readers
-                })
-                .css({
-                    'background-image': 'url(' + $src + ')',
-                })
-
-            $('<li/>')
-                .on('click', { plugin: plugin, slide: i }, plugin.gotoSlide)
-                .appendTo($navbar)
-        })*/
 
         // Event handlers
         $('.ik_carousel')
@@ -129,8 +52,6 @@ When the carousel is not in focus, panels rotate automatically.
 
         plugin.navbuttons = navBtn;
         plugin.slides = $('figure');
-        //plugin.slides.first().addClass('active')
-        //plugin.navbuttons.first().addClass('active')
         plugin.startTimer({ data: { plugin: plugin } });
     };
 
