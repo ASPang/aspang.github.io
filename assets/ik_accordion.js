@@ -49,33 +49,6 @@
         $elem = this.element;
         plugin = this;
 
-        /*
-        $elem
-            .attr({
-                id: id
-            })
-            .addClass('ik_accordion');
-
-        this.headers = $elem.children('dt').each(function(i, el) {
-            var $me, $btn;
-
-            $me = $(el);
-            
-			$btn = $('<div/>').attr({
-          'id': id + '_btn_' + i
-        })
-        .addClass('button')
-        .html($me.html())
-        .on('click', {'plugin': plugin}, plugin.togglePanel);
-        
-			$me.empty().append($btn); // wrap content of each header in an element with role button
-			
-        });*/
-
-        //$('.multiselect [role="button"]')
-        //   .on('keydown', { plugin: plugin }, plugin.onKeyDown) // enable keyboard navigation
-        //  .on('click', { plugin: plugin }, plugin.togglePanel);
-
         this.element
             .find('[role="button"]')
             .on('keydown', { plugin: plugin }, plugin.onKeyDown) // enable keyboard navigation
@@ -132,13 +105,11 @@
                         $btn.removeClass('expanded');
                         $btn.attr('aria-expanded', 'false');
                         $hdr.next().slideUp(plugin.options.animationSpeed);
-                        //$hdr.attr('aria-hidden', 'true');
                         $hdr.next().attr('aria-hidden', 'true');
                     } else {
                         $btn.addClass('expanded');
                         $btn.attr('aria-expanded', 'true');
                         $hdr.next().slideDown(plugin.options.animationSpeed);
-                        //$hdr.attr('aria-hidden', 'false');
                         $hdr.next().attr('aria-hidden', 'false');
                     }
                 });
