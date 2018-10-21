@@ -1,60 +1,108 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>IK Library: Tree Menu</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link href="assets/ik_lib.css" rel="stylesheet" type="text/css">
-		<script src="assets/ik_utils.js"></script>
-		<script src="assets/ik_treemenu.js"></script>
-		<script>
-			
-			$(document).ready(function() {
-				
-				$(".tree").ik_treemenu( {'expandAll': false} ); 
-				
-			});
-			
-		</script>
-	</head>
-	<body>
-		<main>
-			<a href="index.html">&larr; Index</a>
-			<h1>Tree Menu</h1>
-			<div class="flexrow">
-				<nav class="tree">
-					<ul>
-						<li>Bread</li>
-						<li>Cereal</li>
-						<li>Fruit
-							<ul>
-								<li>Bananas</li>
-								<li>Oranges</li>
-								<li>Apples
-									<ul>
-										<li>Macintosh</li>
-										<li>Red Delicious</li>
-										<li>Granny Smith</li>
-									</ul>
-								</li>
-								<li>Pears</li>
-							</ul>
-						</li>
-						<li>Vegetables
-							<ul>
-								<li>Tomatos</li>
-								<li>Latice</li>
-							</ul>
-						</li>
-						<li>Yogurt</li>
-					</ul>
-				</nav>
-				<div class="content">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mi at enim scelerisque laoreet. In hac habitasse platea dictumst. Sed eu sodales sapien, sed venenatis ex. Curabitur non condimentum tellus. Ut quis sapien tempus nunc vehicula suscipit sit amet non neque. Nullam pellentesque at metus et tristique. Praesent et ligula orci. Vestibulum mattis vel lacus quis pulvinar.</p>
-					<p>Curabitur elementum at quam varius fermentum. Duis ut bibendum ex. Suspendisse potenti. Aenean massa erat, tempor eu erat eu, tempus viverra lectus. Sed efficitur, ligula in cursus vulputate, lacus odio volutpat mauris, ac pulvinar ex velit id neque. Praesent ultricies augue vel eros suscipit convallis. Etiam aliquet tristique convallis. Vestibulum eu fringilla leo, ut ultrices metus. Integer mattis tempus auctor. Integer nec magna at metus suscipit sagittis at non risus. Vestibulum tincidunt, sem et suscipit pellentesque, metus nisl varius arcu, sed finibus felis purus ac nisi. Aliquam sollicitudin, lectus non sollicitudin consectetur, nibh mi porta mi, eget vestibulum magna ipsum sed elit. Duis sapien dolor, auctor non nunc vitae, convallis pretium felis. Sed consectetur at ligula a pulvinar. Nulla et felis a augue rutrum elementum vitae id nisl.</p>
-				</div>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>IK Library: Tree Menu</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="assets/ik_lib.css" rel="stylesheet" type="text/css">
+	<script src="assets/ik_utils.js"></script>
+	<script src="assets/ik_treemenu.js"></script>
+	<script>
+		$(document).ready(function () {
+
+			$(".tree").ik_treemenu({ 'expandAll': false });
+
+		});
+	</script>
+</head>
+
+<body>
+	<!--
+			tabindex = [0 | -1]
+			aria-labelledby = [instruction div id | title div id]
+			aria-hidden = [true | false]
+			role = "tree"
+			role = "treeitem"
+			role = "presentation"
+			aria-level = [number of parent ULs]
+			aria-setsize = [number of LIs in a level]
+			aria-posinset = [position of each LI in a set]
+			aria-expanded = [true | false]
+			aria-selected = [true | false]
+			-->
+	<main>
+		<a href="index.html">&larr; Index</a>
+		<h1>Tree Menu</h1>
+		<div class="flexrow">
+			<nav class="tree ik_treemenu" tabindex="0" aria-labelledby="tree0_instructions">
+				<div class="title" id="tree0_title">Breakfast Menu</div>
+				<ul id="tree0" role="tree" aria-labelledby="tree0_title">
+					<li id="tree0_menuitem_0" role="treeitem" tabindex="0" aria-level="1" aria-setsize="5" aria-posinset="1" aria-selected="false"
+					 style="list-style: none;"><span>Bread</span></li>
+					<li id="tree0_menuitem_1" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="5" aria-posinset="2" aria-selected="false"
+					 style="list-style: none;"><span>Cereal</span></li>
+					<li id="tree0_menuitem_2" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="5" aria-posinset="3" aria-expanded="false"
+					 class="collapsed" aria-label="Fruit
+						" style="list-style: none;"><span class="folder" role="presentation">Fruit
+						</span>
+						<ul>
+							<li id="tree0_menuitem_3" role="treeitem" tabindex="-1" aria-level="2" aria-setsize="4" aria-posinset="1" aria-selected="false"
+							 style="list-style: none;"><span>Bananas</span></li>
+							<li id="tree0_menuitem_4" role="treeitem" tabindex="-1" aria-level="2" aria-setsize="4" aria-posinset="2" aria-selected="false"
+							 style="list-style: none;"><span>Oranges</span></li>
+							<li id="tree0_menuitem_5" role="treeitem" tabindex="-1" aria-level="2" aria-setsize="4" aria-posinset="3" aria-expanded="false"
+							 class="collapsed" aria-label="Apples
+								" style="list-style: none;"><span class="folder" role="presentation">Apples
+								</span>
+								<ul>
+									<li id="tree0_menuitem_6" role="treeitem" tabindex="-1" aria-level="3" aria-setsize="3" aria-posinset="1" aria-selected="false"
+									 style="list-style: none;"><span>Macintosh</span></li>
+									<li id="tree0_menuitem_7" role="treeitem" tabindex="-1" aria-level="3" aria-setsize="3" aria-posinset="2" aria-selected="false"
+									 style="list-style: none;"><span>Red Delicious</span></li>
+									<li id="tree0_menuitem_8" role="treeitem" tabindex="-1" aria-level="3" aria-setsize="3" aria-posinset="3" aria-selected="false"
+									 style="list-style: none;"><span>Granny Smith</span></li>
+								</ul>
+							</li>
+							<li id="tree0_menuitem_9" role="treeitem" tabindex="-1" aria-level="2" aria-setsize="4" aria-posinset="4" aria-selected="false"
+							 style="list-style: none;"><span>Pears</span></li>
+						</ul>
+					</li>
+					<li id="tree0_menuitem_10" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="5" aria-posinset="4" aria-expanded="false"
+					 class="collapsed" aria-label="Vegetables
+						" style="list-style: none;"><span class="folder" role="presentation">Vegetables
+						</span>
+						<ul>
+							<li id="tree0_menuitem_11" role="treeitem" tabindex="-1" aria-level="2" aria-setsize="2" aria-posinset="1" aria-selected="false"
+							 style="list-style: none;"><span>Tomatos</span></li>
+							<li id="tree0_menuitem_12" role="treeitem" tabindex="-1" aria-level="2" aria-setsize="2" aria-posinset="2" aria-selected="false"
+							 style="list-style: none;"><span>Latice</span></li>
+						</ul>
+					</li>
+					<li id="tree0_menuitem_13" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="5" aria-posinset="5" aria-selected="false"
+					 style="list-style: none;"><span>Yogurt</span></li>
+				</ul>
+				<div class="ik_readersonly" id="tree0_instructions" aria-hidden="true">Use tab to enter navigation. Then use up or down arrows to move through menu items, and Enter or Spacebar to toggle submenus
+					open and closed.</div>
+			</nav>
+
+			<div class="content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mi at enim scelerisque laoreet. In hac habitasse platea
+					dictumst. Sed eu sodales sapien, sed venenatis ex. Curabitur non condimentum tellus. Ut quis sapien tempus nunc vehicula
+					suscipit sit amet non neque. Nullam pellentesque at metus et tristique. Praesent et ligula orci. Vestibulum mattis vel
+					lacus quis pulvinar.</p>
+				<p>Curabitur elementum at quam varius fermentum. Duis ut bibendum ex. Suspendisse potenti. Aenean massa erat, tempor eu
+					erat eu, tempus viverra lectus. Sed efficitur, ligula in cursus vulputate, lacus odio volutpat mauris, ac pulvinar ex
+					velit id neque. Praesent ultricies augue vel eros suscipit convallis. Etiam aliquet tristique convallis. Vestibulum
+					eu fringilla leo, ut ultrices metus. Integer mattis tempus auctor. Integer nec magna at metus suscipit sagittis at non
+					risus. Vestibulum tincidunt, sem et suscipit pellentesque, metus nisl varius arcu, sed finibus felis purus ac nisi.
+					Aliquam sollicitudin, lectus non sollicitudin consectetur, nibh mi porta mi, eget vestibulum magna ipsum sed elit. Duis
+					sapien dolor, auctor non nunc vitae, convallis pretium felis. Sed consectetur at ligula a pulvinar. Nulla et felis a
+					augue rutrum elementum vitae id nisl.</p>
 			</div>
-		</main>
-	</body>
+		</div>
+	</main>
+</body>
+
 </html>

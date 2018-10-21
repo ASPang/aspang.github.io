@@ -24,10 +24,12 @@
 				
 				$elem = $pb.attr({
 					'tabindex': 0
-				}).focus(); 
+				}); 
 				plugin = $elem.data("ik_progressbar");
 				plugin.reset();
 				
+				$elem.focus();
+
 				window.timer = window.setInterval(updateProgress, 100, plugin);
 				$(e.currentTarget).prop({ "disabled": true });
 				
