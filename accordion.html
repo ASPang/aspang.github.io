@@ -1,66 +1,76 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>IK Library: Accordion</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link href="assets/ik_lib.css" rel="stylesheet" type="text/css">
-		<script src="assets/ik_utils.js"></script>
-		<script src="assets/ik_accordion.js"></script>
-		<script>
-			
-			//var $pb, timer;
-			
-			$(document).ready(function() {
-				
-				$(".multiselect").ik_accordion();
-				$(".singleselect").ik_accordion({ 'autoCollapse': true});
-				
-			});
-			
-		</script>
-	</head>
-	<body>
-		<main>
-			<a href="index.html">&larr; Index</a>
-			<h1>Accordion</h1>
-			<h2>autoCollapse = false</h2>
-			<dl class="multiselect" role="region" aria-multiselectable="false">
-				<dt role="heading">					
-					<div id="acc0_btn_0" role="button" aria-controls="acc0_panel_0" aria-expanded="false" tabindex="0" class="button">
-						Accordion panel
-					</div>
-				</dt>
-				<dd id="acc0_panel_0" role="region" aria-hidden="true" tabindex="0" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo.</dd>
-				<dt role="heading">
-					<div id="acc0_btn_1" role="button" aria-controls="acc0_panel_1" aria-expanded="false" tabindex="0" class="button">
-						Accordion panel
-					</div>
-				</dt>
-				<dd id="acc0_panel_1" role="region" aria-hidden="true" tabindex="0" >Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
-			</dl>
-			<h2>autoCollapse = true</h2>
-			<dl class="singleselect" role="region" aria-multiselectable="false">
-				<dt role="heading"> 
-					<div id="acc1_btn_0" role="button" aria-controls="acc1_panel_0" aria-expanded="false" tabindex="0" class="button"> 
-						Accordion panel
-					</div>
-				</dt>
-				<dd id="acc1_panel_0" role="region" aria-hidden="true" tabindex="0" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo.</dd>
-				<dt role="heading">
-					<div id="acc1_btn_1" role="button" aria-controls="acc1_panel_1" aria-expanded="false" tabindex="0" class="button"> 
-						Accordion panel
-					</div>
-				</dt>
-				<dd id="acc1_panel_1" role="region" aria-hidden="true" tabindex="0">Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
-				<dt role="heading">
-					<div id="acc1_btn_2" role="button" aria-controls="acc1_panel_2" aria-expanded="false" tabindex="0" class="button"> 
-						Accordion panel
-					</div>
-				</dt>
-				<dd id="acc1_panel_2" role="region" aria-hidden="true" tabindex="0">Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo. Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
-			</dl>
-		</main>
-	</body>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>IK Library: Accordion</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="assets/ik_lib.css" rel="stylesheet" type="text/css">
+	<script src="assets/ik_utils.js"></script>
+	<script src="assets/ik_accordion.js"></script>
+	<script>
+		//var $pb, timer;
+
+		$(document).ready(function () {
+
+			$(".multiselect").ik_accordion();
+			$(".singleselect").ik_accordion({ 'autoCollapse': true });
+
+		});
+	</script>
+</head>
+
+<body>
+	<main>
+		<a href="index.html">&larr; Index</a>
+		<h1>Accordion</h1>
+		<h2>autoCollapse = false</h2>
+		<dl class="multiselect ik_accordion" role="region" aria-multiselectable="false">
+			<dt role="heading">
+				<div id="acc0_btn_0" role="button" aria-controls="acc0_panel_0" aria-expanded="false" tabindex="0" class="button">
+					Accordion panel
+				</div>
+			</dt>
+			<dd id="acc0_panel_0" role="region" aria-hidden="true" tabindex="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur erat purus, nec molestie metus molestie at.
+				Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas
+				pharetra odio. Sed sed varius massa. Integer sed volutpat leo.</dd>
+			<dt role="heading">
+				<div id="acc0_btn_1" role="button" aria-controls="acc0_panel_1" aria-expanded="false" tabindex="0" class="button">
+					Accordion panel
+				</div>
+			</dt>
+			<dd id="acc0_panel_1" role="region" aria-hidden="true" tabindex="0">Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices
+				lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
+		</dl>
+		<h2>autoCollapse = true</h2>
+		<dl class="singleselect ik_accordion" role="region" aria-multiselectable="false">
+			<dt role="heading">
+				<div id="acc1_btn_0" role="button" aria-controls="acc1_panel_0" aria-expanded="false" tabindex="0" class="button">
+					Accordion panel
+				</div>
+			</dt>
+			<dd id="acc1_panel_0" role="region" aria-hidden="true" tabindex="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur erat purus, nec molestie metus molestie at.
+				Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas
+				pharetra odio. Sed sed varius massa. Integer sed volutpat leo.</dd>
+			<dt role="heading">
+				<div id="acc1_btn_1" role="button" aria-controls="acc1_panel_1" aria-expanded="false" tabindex="0" class="button">
+					Accordion panel
+				</div>
+			</dt>
+			<dd id="acc1_panel_1" role="region" aria-hidden="true" tabindex="0">Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices
+				lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
+			<dt role="heading">
+				<div id="acc1_btn_2" role="button" aria-controls="acc1_panel_2" aria-expanded="false" tabindex="0" class="button">
+					Accordion panel
+				</div>
+			</dt>
+			<dd id="acc1_panel_2" role="region" aria-hidden="true" tabindex="0">Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat
+				sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat
+				leo. Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur
+				ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
+		</dl>
+	</main>
+</body>
+
 </html>

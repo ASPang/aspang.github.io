@@ -1,16 +1,3 @@
-/**
-This criterion is linked to a Learning Outcome Instructions Provided
-Instructions are announced on using the sortable list with a keyboard when it first receives focus.
-
-This criterion is linked to a Learning Outcome Movable List Items
-When navigating through list items, their position is announced along with an indication they can be moved.
-
-This criterion is linked to a Learning Outcome List Items are Sortable
-Using the keyboard operation described in Adding Keyboard Operability for sortable lists, list items can be moved without using a mouse.
-
-This criterion is linked to a Learning Outcome Moved position
-When a list items is moved, its new position is announced
- */
 (function($, window, document, undefined) {
     var pluginName = 'ik_sortable',
         modifier =
@@ -35,54 +22,7 @@ When a list items is moved, its new position is announced
         var $elem, plugin, id, total;
 
         plugin = this;
-        /*
-        id = 'sortable_' + $('.ik_sortable').length;
-        $elem = this.element
-            .attr({
-                id: id,
-                role: 'list',
-                tabindex: 0,
-                'aria-labelledby': id + '_instructions'
-            })
-            .wrap('<div class="ik_sortable"></div>')
-            .before(plugin.temp);
 
-        $('<div/>') // add div element to be used with aria-describedby attribute of the menu
-            .text(plugin.options.instructions) // get instruction text from plugin options
-            .addClass('ik_readersonly') // hide element from visual display
-            .attr({
-                id: id + '_instructions',
-                'aria-hidden': 'true' // hide element from screen readers to prevent it from being read twice
-            })
-            .appendTo($elem);
-
-        total = $elem.children('li').length;
-
-        plugin.items = $elem
-            .children('li')
-            .each(function(i, el) {
-                $(el).attr({
-                    draggable: true,
-                    id: id + '_' + i,
-                    role: 'listitem',
-                    'aria-label':
-                        $(el).text() +
-                        ' ' +
-                        (i + 1) +
-                        ' of ' +
-                        total +
-                        ' movable',
-                    tabindex: i > 0 ? -1 : 0
-                });
-            })
-            .on('dragstart', { plugin: plugin }, plugin.onDragStart)
-            .on('drop', { plugin: plugin }, plugin.onDrop)
-            .on('dragend', { plugin: plugin }, plugin.onDragEnd)
-            .on('dragenter', { plugin: plugin }, plugin.onDragEnter)
-            .on('dragover', { plugin: plugin }, plugin.onDragOver)
-            .on('dragleave', { plugin: plugin }, plugin.onDragLeave)
-            .on('keydown', { plugin: plugin }, plugin.onKeyDown);
-*/
         plugin.items = $('[role="listitem"]')
             .on('dragstart', { plugin: plugin }, plugin.onDragStart)
             .on('drop', { plugin: plugin }, plugin.onDrop)
