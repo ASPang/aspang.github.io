@@ -17,8 +17,6 @@ Tree menu functions with a keyboard as described in Adding Keyboard Operability 
 (function($, window, document, undefined) {
     var pluginName = 'ik_treemenu',
         defaults = {
-            instructions:
-                'Use up or down arrows to move through menu items, and Enter or Spacebar to toggle submenus open and closed.',
             menuTitle: 'Breakfast Menu',
             expandAll: true
         };
@@ -45,7 +43,7 @@ Tree menu functions with a keyboard as described in Adding Keyboard Operability 
 
         plugin = this;
         $elem = plugin.element;
-        id = 'tree' + $('.ik_treemenu').length; // create unique id
+        /*id = 'tree' + $('.ik_treemenu').length; // create unique id
 
         $elem.addClass('ik_treemenu').attr({
             tabindex: 0,
@@ -137,7 +135,14 @@ Tree menu functions with a keyboard as described in Adding Keyboard Operability 
             .find('li:first')
             .attr({
                 tabindex: 0
-            });
+			});*/
+
+        $('[role="treeitem"]:first').on('focus', {}, plugin.onFocus);
+
+        // Event handlers
+        $('[role="treeitem"]')
+            .on('click', { plugin: plugin }, plugin.onClick)
+            .on('keydown', { plugin: plugin }, plugin.onKeyDown);
     };
 
     /** 
@@ -208,6 +213,23 @@ Tree menu functions with a keyboard as described in Adding Keyboard Operability 
                     .addClass('collapsed');
             }
         }
+    };
+
+    /** 
+	 * Update aria-selected for first tree item
+	 */
+    Plugin.prototype.onFocus = function(event) {
+        $('[aria-selected=true]') // remove previous selection
+            .attr({
+                tabindex: -1,
+                'aria-selected': false
+            });
+
+        $(event.currentTarget).attr({
+            // select specified treeitem
+            tabindex: 0, // add selected treeitem to tab order
+            'aria-selected': true
+        });
     };
 
     /** 
