@@ -71,7 +71,6 @@ var pluginName = "ik_suggest",
 		plugin = event.data.plugin;
 		
 		plugin.notify.text(plugin.options.instructions);
-		//plugin.notify.text("While typing suggestion box will open. Use up or down arrow key to select country. Press Enter to make a selection.")
 	};
 	
 	/** 
@@ -102,41 +101,7 @@ var pluginName = "ik_suggest",
 				plugin.element.val( selected.text() ); // set text field value to the selected option
 				plugin.list.empty().hide(); // empty list and hide suggestion box
 				
-				break;
-			/*case ik_utils.keys.down: // select next suggestion from list   
-                selected = plugin.list.find('.selected');  
-                if(selected.length) {
-                    msg = selected.removeClass('selected').next().addClass('selected').text();
-                } else {
-                    msg = plugin.list.find('li:first').addClass('selected').text();
-                }
-				plugin.notify.text(msg); // add suggestion text to live region to be read by screen reader
-                break;
-            case ik_utils.keys.up: // select previous suggestion from list
-                selected = plugin.list.find('.selected');
-                if(selected.length) {
-                    msg = selected.removeClass('selected').prev().addClass('selected').text();
-                }
-				plugin.notify.text(msg);  // add suggestion text to live region to be read by screen reader
-
-                break;
-           
-            default: // get suggestions based on user input
-                plugin.list.empty();
-                suggestions = plugin.getSuggestions(plugin.options.source, $me.val());
-                if (suggestions.length > 1) {
-                    for(var i = 0, l = suggestions.length; i < l; i++) {
-                        $('<li/>').html(suggestions[i])
-                        .on('click', {'plugin': plugin}, plugin.onOptionClick) // add click event handler
-                        .appendTo(plugin.list);
-                    }
-                    plugin.list.show();
-                } else {
-                    plugin.list.hide();
-                }
-               
-        		break;*/
-				
+				break;				
 		}
 		
 	};
@@ -194,35 +159,6 @@ var pluginName = "ik_suggest",
 				
 				break;
 		}
-		
-		/*if (event.keyCode != ik_utils.keys.up && event.keyCode != ik_utils.keys.down) {
-				plugin.list.empty();
-				
-				suggestions = plugin.getSuggestions(plugin.options.source, $me.val());
-				
-				if (suggestions.length > 1) {
-					for(var i = 0, l = suggestions.length; i < l; i++) {
-						$('<li />').html(suggestions[i])
-						.on('click', {'plugin': plugin}, plugin.onOptionClick) // add click event handler
-						.appendTo(plugin.list);
-					}
-					plugin.list.show();
-
-					// Add notification
-					//var suggestNotify = "Sugguestions are available";
-					//if (plugin.notify.text() !== suggestNotify) {
-					//	plugin.notify.text(suggestNotify);
-					//}
-				} else {
-					plugin.list.hide();
-
-					// Inform user that suggestion box is closed
-					//var suggestNotify = "Sugguestions are not available";
-					//if (plugin.notify.text() !== "") {
-					//	plugin.notify.text("");
-					//}
-				}
-		}*/
 	};
 	
 	/** 
